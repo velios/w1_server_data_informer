@@ -4,5 +4,6 @@ Lib/
 Scripts/
 .idea/
 *.txt
+!requirements.txt
 pip-selfcheck.json
 pyvenv.cfg
