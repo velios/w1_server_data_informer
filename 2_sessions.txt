@@ -1,0 +1,7 @@
+created_at	updated_at	deleted_at	deleted	id	instance_id	user_id	connection	closed_at	session_id	client_ip	client_os	client_info
+2017-08-17 15:58:39	NULL	NULL	0	2	33ac5bfb-9d94-48ef-800d-94fd91ab4d0c	dfd09fce1c40e0be4f36fae55ff66043347a874955bafdecaaf4c0fea0eaf934	2	NULL	51e10c54-78de-475a-85b5-bb06ec26e53a	172.16.0.0	ALT Linux  7.0.5	TIONIX.VDIclient 1.20.0
+2017-08-17 16:02:21	NULL	NULL	0	5	82dac3aa-8294-412b-9f6a-2d4c808e5884	2d68b70b7353cb8720aea00a97738bdb9e1f74a335a4faed6af8ae63446aa44a	2	NULL	86bcd57b-dae1-4ba4-88bd-054d0a6fafc3	172.16.0.0	ALT Linux  7.0.5	TIONIX.VDIclient 1.20.0
+2017-08-17 16:06:45	NULL	NULL	0	8	33ac5bfb-9d94-48ef-800d-94fd91ab4d0c	dfd09fce1c40e0be4f36fae55ff66043347a874955bafdecaaf4c0fea0eaf934	2	NULL	3c50474a-d963-4e4b-b772-9e18aac9e254	172.16.0.0	ALT Linux  7.0.5	TIONIX.VDIclient 1.20.0
+2017-08-17 16:06:45	NULL	NULL	0	8	33ac5bfb-9d94-48ef-800d-94fd91ab4d0c	dfd09fce1c40e0be4f36fae55ff66043347a874955bafdecaaf4c0fea0eaf934	2	NULL	3c50474a-d963-4e4b-b772-9e18aac9e254	172.16.0.0	ALT Linux  7.0.5	TIONIX.VDIclient 1.20.0
+2017-08-17 16:06:45	NULL	NULL	0	8	33ac5bfb-9d94-48ef-800d-94fd91ab4d0c	dfd09fce1c40e0be4f36fae55ff66043347a874955bafdecaaf4c0fea0eaf934	2	NULL	3c50474a-d963-4e4b-b772-9e18aac9e254	172.16.0.0	ALT Linux  7.0.5	TIONIX.VDIclient 1.20.0
+2017-08-17 16:06:45	NULL	NULL	0	8	bbcf2598-f71f-470d-a5f4-f9dd56a3b746	ba9e78ea94501e605483c474924cc0c5b63281afea23ab11beb9e4cef7a84553	2	NULL	3c50474a-d963-4e4b-b772-9e18aac9e254	172.16.0.0	ALT Linux  7.0.5	TIONIX.VDIclient 1.20.0
