@@ -3,6 +3,12 @@ Include/
 Lib/
 Scripts/
 .idea/
+bin/
+include/
+lib/
+lib64/
+lib64
+*.csv
 *.txt
 !requirements.txt
 pip-selfcheck.json

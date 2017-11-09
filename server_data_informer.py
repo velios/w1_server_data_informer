@@ -4,6 +4,7 @@ import os
 import pprint
 
 import listorm as ls
+import texttable
 
 
 ALL_SERVER_FILE_PATH = '1_allservers.txt'
@@ -35,22 +36,38 @@ def fetch_last_sessions_list(sessions_list):
             last_sessions_list.append(session)
             session_id_compare_list.append(session['session_id'])
     return last_sessions_list
+    
+
+def print_last_session_instances():
+    column_query = ['session_id', 'instance_id', 'instance_name', 'Host', 'user_id', 'user_name']
+    
+    join_sessions_servers_and_users_lists = last_sessions_list.join(
+        servers_list.rename(ID='instance_id', Name='instance_name'),
+        on='instance_id',
+        how='left').join(
+            users_list.rename(ID='user_id', Name='user_name'),
+            on='user_id',
+            how='left'
+            ).select(*column_query)
+    
+
+    table = texttable.Texttable(max_width=150)
+    table_head = [column_query]
+    
+    table_body = join_sessions_servers_and_users_lists.row_values(*column_query)
+
+    table.add_rows(table_head + table_body)
+    print(table.draw())
+    
+    join_sessions_servers_and_users_lists.to_csv(filename='last_session_instances.csv')
+
 
 
 if __name__ == '__main__':
-    all_servers_list = load_json_data(ALL_SERVER_FILE_PATH)
+    servers_list = ls.Listorm(load_json_data(ALL_SERVER_FILE_PATH))
     sessions_list = load_csv_data_in_json_format(SESSIONS_FILE_PATH,
                                                  delimeter='\t')
-    users_list = load_json_data(USERS_FILE_PATH)
-    last_sessions_list = fetch_last_sessions_list(sessions_list)
+    users_list = ls.Listorm(load_json_data(USERS_FILE_PATH))
+    last_sessions_list = ls.Listorm(fetch_last_sessions_list(sessions_list))
     
-    print(all_servers_list)
-
-    # print(all_servers_list)
-    # pprint.pprint(sessions_list)
-    # print(users_dataframe)
-    # print(last_sessions_list)
-    # print(len(last_sessions_list))
-    
-    # print(len(first_merge))
-    # pprint.pprint(first_merge)
+    print_last_session_instances()

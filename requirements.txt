@@ -1,0 +1,2 @@
+listorm==0.2.12
+texttable==1.1.1
