@@ -6,7 +6,7 @@ from collections import namedtuple, Counter, OrderedDict, defaultdict
 from functools import partial
 import csv, re
 
-import xlrd, xlsxwriter
+# import xlrd, xlsxwriter
 
 
 def str2float(value):
@@ -463,35 +463,35 @@ class Listorm(list):
         '''
         return join(self, other, **kwargs)
 
-    def to_excel(self, filename=None, selects=None):
-        '''If filnames is None, returns filecontents
-        '''
-        if not self:
-            return
-        selects = selects or self.column_orders
+    # def to_excel(self, filename=None, selects=None):
+    #     '''If filnames is None, returns filecontents
+    #     '''
+    #     if not self:
+    #         return
+    #     selects = selects or self.column_orders
 
-        error_columns = set(selects) - self[0].keys()
+    #     error_columns = set(selects) - self[0].keys()
 
-        for col in error_columns:
-            selects.remove(col)
+    #     for col in error_columns:
+    #         selects.remove(col)
 
-        for key, val in self[0].items():
-            if isinstance(val, (Listorm, list)):
-                selects.remove(key)
+    #     for key, val in self[0].items():
+    #         if isinstance(val, (Listorm, list)):
+    #             selects.remove(key)
 
-        output = BytesIO()
-        wb = xlsxwriter.Workbook(output)
-        ws = wb.add_worksheet()
-        ws.write_row(0,0, selects)
-        for r, row in enumerate(self, 1):
-            row_values = [row[k] for k in selects]
-            ws.write_row(r,0, row_values)
-        wb.close()
-        if filename:
-            with open(filename, 'wb') as fp:
-                fp.write(output.getvalue())
-        else:
-            return output.getvalue()
+    #     output = BytesIO()
+    #     wb = xlsxwriter.Workbook(output)
+    #     ws = wb.add_worksheet()
+    #     ws.write_row(0,0, selects)
+    #     for r, row in enumerate(self, 1):
+    #         row_values = [row[k] for k in selects]
+    #         ws.write_row(r,0, row_values)
+    #     wb.close()
+    #     if filename:
+    #         with open(filename, 'wb') as fp:
+    #             fp.write(output.getvalue())
+    #     else:
+    #         return output.getvalue()
 
     def to_csv(self, filename=None, selects=None):
         if not self:
@@ -664,14 +664,14 @@ def join(left, right, left_on=None, right_on=None, on=None, how='inner'):
     return Listorm(ret, column_orders=column_orders, index=left.index)
 
 
-def read_excel(file_name=None, file_contents=None, sheet_index=0, start_row=0, index=None):
-    '''Excel File or byte Content of Excel to Listorm object
-    '''
-    wb = xlrd.open_workbook(filename=file_name, file_contents=file_contents)
-    ws = wb.sheet_by_index(sheet_index)
-    fields = ws.row_values(start_row)
-    records = [dict(zip(fields, map(str, ws.row_values(r)))) for r in range(start_row+1, ws.nrows)]
-    return Listorm(records, index=index, column_orders=fields)
+# def read_excel(file_name=None, file_contents=None, sheet_index=0, start_row=0, index=None):
+#     '''Excel File or byte Content of Excel to Listorm object
+#     '''
+#     wb = xlrd.open_workbook(filename=file_name, file_contents=file_contents)
+#     ws = wb.sheet_by_index(sheet_index)
+#     fields = ws.row_values(start_row)
+#     records = [dict(zip(fields, map(str, ws.row_values(r)))) for r in range(start_row+1, ws.nrows)]
+#     return Listorm(records, index=index, column_orders=fields)
 
 
 def read_csv(filename=None, encoding='utf-8',  fp=None, index=None):
